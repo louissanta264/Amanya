@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PEAK HOTEL - Luxury in Mitooma Town</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+:root {
+			--primary: #0a3d62;
+			--secondary: #f9ca24;
+			--accent: #eb2f06;
+			--light: #f5f6fa;
+			--dark: #2c3e50;
+		}
+
+		body {
+			background-color: #f8f9fa;
+			color: var(--dark);
+			line-height: 1.6;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		/* Header Styles */
+		header {
+			background-color: var(--primary);
+			color: white;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		.header-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 15px 0;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+		}
+
+		.logo h1 {
+			font-size: 28px;
+			margin-left: 10px;
+			color: var(--secondary);
+			}
+
+			.logo i {
+			font-size: 32px;
+			color: var(--secondary);
+			}
+
+			nav ul {
+			display: flex;
+			list-style: none;
+		}
+
+		nav ul li {
+			margin-left: 25px;
+		}
+
+		nav ul li a {
+			color: white;
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 17px;
+			transition: color 0.3s;
+		}
+
+		nav ul li a:hover {
+			color: var(--secondary);
+			}
+
+			.mobile-menu-btn {
+			display: none;
+			background: none;
+			border: none;
+			color: white;
+			font-size: 24px;
+			cursor: pointer;
+		}
+
+		/* Hero Section */
+		.hero {
+			background: linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.9)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+			background-size: cover;
+			background-position: center;
+			color: white;
+			padding: 100px 0;
+			text-align: center;
+		}
+
+		.hero h2 {
+			font-size: 48px;
+			margin-bottom: 20px;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			}
+
+			.hero p {
+			font-size: 20px;
+			max-width: 800px;
+			margin: 0 auto 30px;
+		}
+
+		.btn {
+			display: inline-block;
+			background-color: var(--secondary);
+			color: var(--primary);
+			padding: 12px 30px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: 700;
+			font-size: 18px;
+			transition: all 0.3s;
+			border: none;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background-color: #e1b918;
+			transform: translateY(-3px);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Features Section */
+		.section-title {
+			text-align: center;
+			margin: 60px 0 40px;
+			color: var(--primary);
+			font-size: 36px;
+			position: relative;
+		}
+
+		.section-title:after {
+			content: '';
+			position: absolute;
+			width: 80px;
+			height: 4px;
+			background-color: var(--secondary);
+			bottom: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			}
+
+			.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+			margin-bottom: 60px;
+		}
+
+		.feature-card {
+			background-color: white;
+			border-radius: 8px;
+			overflow: hidden;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+			transition: transform 0.3s;
+		}
+
+		.feature-card:hover {
+			transform: translateY(-10px);
+			}
+
+			.feature-img {
+			height: 200px;
+			background-size: cover;
+			background-position: center;
+		}
+
+		.feature-content {
+			padding: 25px;
+		}
+
+		.feature-content h3 {
+			color: var(--primary);
+			margin-bottom: 15px;
+			font-size: 22px;
+		}
+
+		.feature-content p {
+			color: #666;
+			margin-bottom: 15px;
+		}
+
+		/* Booking Form */
+		.booking-section {
+			background-color: white;
+			padding: 40px;
+			border-radius: 10px;
+			box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+			margin-bottom: 60px;
+		}
+
+		.booking-title {
+			color: var(--primary);
+			margin-bottom: 30px;
+			text-align: center;
+			font-size: 32px;
+		}
+
+		.booking-form {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+		}
+
+		.form-group {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.form-group label {
+			margin-bottom: 8px;
+			font-weight: 600;
+			color: var(--primary);
+			}
+
+			.form-group input,
+		.form-group select,
+		.form-group textarea {
+			padding: 12px 15px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+
+		.form-group textarea {
+			resize: vertical;
+			min-height: 100px;
+		}
+
+		.booking-form .btn {
+			grid-column: 1 / -1;
+			justify-self: center;
+			margin-top: 20px;
+			padding: 15px 40px;
+		}
+
+		/* Footer */
+		footer {
+			background-color: var(--primary);
+			color: white;
+			padding: 50px 0 20px;
+		}
+
+		.footer-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 40px;
+			margin-bottom: 40px;
+		}
+
+		.footer-column h3 {
+			color: var(--secondary);
+			margin-bottom: 20px;
+			font-size: 22px;
+		}
+
+		.footer-column p, .footer-column a {
+			color: #ddd;
+			margin-bottom: 10px;
+			display: block;
+			text-decoration: none;
+		}
+
+		.footer-column a:hover {
+			color: var(--secondary);
+			}
+
+			.social-icons {
+			display: flex;
+			gap: 15px;
+			margin-top: 20px;
+		}
+
+		.social-icons a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			transition: all 0.3s;
+		}
+
+		.social-icons a:hover {
+			background-color: var(--secondary);
+			color: var(--primary);
+			}
+
+			.copyright {
+			text-align: center;
+			padding-top: 20px;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			color: #aaa;
+			font-size: 14px;
+		}
+
+		/* Page 2 Styles */
+		.page-content {
+			padding: 60px 0;
+			background-color: white;
+		}
+
+		.page-content h2 {
+			color: var(--primary);
+			margin-bottom: 30px;
+			font-size: 32px;
+		}
+
+		.page-content p {
+			margin-bottom: 20px;
+			font-size: 18px;
+			line-height: 1.8;
+		}
+
+		.amenities-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+			margin: 40px 0;
+		}
+
+		.amenity-item {
+			display: flex;
+			align-items: flex-start;
+			gap: 15px;
+		}
+
+		.amenity-icon {
+			background-color: var(--secondary);
+			color: var(--primary);
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 22px;
+			flex-shrink: 0;
+		}
+
+		/* Modal for booking confirmation */
+		.modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 2000;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.modal-content {
+			background-color: white;
+			padding: 40px;
+			border-radius: 10px;
+			max-width: 500px;
+			width: 90%;
+			text-align: center;
+			box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+			}
+
+			.modal-content h3 {
+			color: var(--primary);
+			margin-bottom: 20px;
+			font-size: 28px;
+		}
+
+		.modal-content p {
+			margin-bottom: 30px;
+			font-size: 18px;
+		}
+
+		.close-modal {
+			background-color: var(--primary);
+			color: white;
+		}
+
+		/* Responsive Styles */
+		@media (max-width: 992px) {
+			.hero h2 {
+				font-size: 40px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.header-container {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			nav {
+				width: 100%;
+				margin-top: 20px;
+				display: none;
+			}
+
+			nav.active {
+				display: block;
+			}
+
+			nav ul {
+				flex-direction: column;
+			}
+
+			nav ul li {
+				margin: 10px 0;
+			}
+
+			.mobile-menu-btn {
+				display: block;
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+
+			.hero {
+				padding: 80px 0;
+			}
+
+			.hero h2 {
+				font-size: 32px;
+			}
+
+			.section-title {
+				font-size: 30px;
+			}
+
+			.booking-form {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.hero h2 {
+				font-size: 28px;
+			}
+
+			.hero p {
+				font-size: 18px;
+			}
+
+			.section-title {
+				font-size: 26px;
+			}
+
+			.booking-section {
+				padding: 30px 20px;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<div class="container header-container">
+				<div class="logo">
+					<i class="fas fa-mountain"></i>
+					<h1>PEAK HOTEL</h1>
+				</div>
+				<button class="mobile-menu-btn" id="mobileMenuBtn">
+					<i class="fas fa-bars"></i>
+				</button>
+				<nav id="mainNav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About & Amenities</a></li>
+						<li><a href="#booking">Book Now</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Main Content (Page 1) -->
+		<main id="homePage">
+			<!-- Hero Section -->
+			<section class="hero">
+				<div class="container">
+					<h2>Experience Luxury at PEAK HOTEL</h2>
+					<p>
+						Located in the heart of Mitooma Town, Mitooma District, PEAK HOTEL offers premium accommodation, exquisite dining, and state-of-the-art facilities for business and leisure.
+						We have enough and a good parking lot,
+						And security is strong and reliable.
+					</p>
+					<a href="#booking" class="btn">Book Your Stay</a>
+				</div>
+			</section>
+
+			<!-- Features Section -->
+			<div class="container">
+				<h2 class="section-title">Our Premium Facilities</h2>
+				<div class="features-grid">
+					<div class="feature-card">
+						<div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+						<div class="feature-content">
+							<h3>Luxurious Rooms & Suites</h3>
+							<p>
+								Experience comfort in our well-appointed rooms and suites with modern amenities, stunning views, and premium services.
+							</p>
+							<a href="#booking" class="btn" style="padding: 8px 20px; font-size: 16px;">Book Now</a>
+						</div>
+					</div>
+
+					<div class="feature-card">
+						<div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+						<div class="feature-content">
+							<h3>Event & Conference Spaces</h3>
+							<p>
+								Host your meetings, parties, and gatherings in our spacious grounds and fully-equipped conference facilities.
+							</p>
+							<a href="#booking" class="btn" style="padding: 8px 20px; font-size: 16px;">Book Event</a>
+						</div>
+					</div>
+
+					<div class="feature-card">
+						<div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+						<div class="feature-content">
+							<h3>Bars & Clubs</h3>
+							<p>
+								Enjoy our vibrant nightlife with premium bars and clubs offering the best drinks, music, and entertainment.
+							</p>
+							<a href="#booking" class="btn" style="padding: 8px 20px; font-size: 16px;">Reserve Table</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Booking Form -->
+				<section id="booking" class="booking-section">
+					<h2 class="booking-title">Book Your Experience</h2>
+					<form id="bookingForm" class="booking-form">
+						<div class="form-group">
+							<label for="fullName">Full Name</label>
+							<input type="text" id="fullName" name="fullName" required>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email Address</label>
+							<input type="email" id="email" name="email" required>
+						</div>
+
+						<div class="form-group">
+							<label for="phone">Phone Number</label>
+							<input type="tel" id="phone" name="phone" required>
+						</div>
+
+						<div class="form-group">
+							<label for="serviceType">Service Required</label>
+							<select id="serviceType" name="serviceType" required>
+								<option value="">Select a service</option>
+								<option value="accommodation">Hotel Accommodation</option>
+								<option value="meeting">Meeting/Conference</option>
+								<option value="party">Party/Gathering</option>
+								<option value="dining">Dining & Bar</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="date">Preferred Date</label>
+							<input type="date" id="date" name="date" required>
+						</div>
+
+						<div class="form-group">
+							<label for="guests">Number of Guests</label>
+							<input type="number" id="guests" name="guests" min="1" required>
+						</div>
+
+						<div class="form-group" style="grid-column: 1 / -1;">
+							<label for="message">Additional Requests</label>
+							<textarea id="message" name="message" placeholder="Tell us about any special requirements..."></textarea>
+						</div>
+
+						<button type="submit" class="btn">Submit Booking Request</button>
+					</form>
+				</section>
+			</div>
+		</main>
+
+		<!-- About Page (Page 2 - Hidden by default) -->
+		<section id="aboutPage" class="page-content" style="display: none;">
+			<div class="container">
+				<h2>About PEAK HOTEL</h2>
+				<p>
+					Welcome to PEAK HOTEL, the premier hospitality destination in Mitooma Town, Mitooma District. Since our establishment, we have been committed to providing exceptional service and unforgettable experiences to all our guests.
+				</p>
+
+				<p>
+					Our hotel is strategically located to offer breathtaking views of the surrounding landscapes while providing easy access to local attractions and business centers. At PEAK HOTEL, we blend modern luxury with authentic local culture to create a unique stay for every visitor.
+				</p>
+
+				<h2 style="margin-top: 50px;">Our Amenities & Features</h2>
+
+				<div class="amenities-list">
+					<div class="amenity-item">
+						<div class="amenity-icon">
+							<i class="fas fa-utensils"></i>
+						</div>
+						<div>
+							<h3>Fine Dining Restaurants</h3>
+							<p>
+								Experience culinary excellence at our multiple restaurants serving local and international cuisine.
+							</p>
+						</div>
+					</div>
+
+					<div class="amenity-item">
+						<div class="amenity-icon">
+							<i class="fas fa-glass-cheers"></i>
+						</div>
+						<div>
+							<h3>Bars & Clubs</h3>
+							<p>
+								Unwind at our premium bars and vibrant clubs featuring live music, DJs, and signature cocktails.
+							</p>
+						</div>
+					</div>
+
+					<div class="amenity-item">
+						<div class="amenity-icon">
+							<i class="fas fa-users"></i>
+						</div>
+						<div>
+							<h3>Event Spaces</h3>
+							<p>
+								Host weddings, conferences, and parties in our spacious indoor and outdoor event venues.
+							</p>
+						</div>
+					</div>
+
+					<div class="amenity-item">
+						<div class="amenity-icon">
+							<i class="fas fa-swimming-pool"></i>
+						</div>
+						<div>
+							<h3>Recreation Facilities</h3>
+							<p>
+								Enjoy our swimming pool, fitness center, spa, and other recreational amenities.
+							</p>
+						</div>
+					</div>
+
+					<div class="amenity-item">
+						<div class="amenity-icon">
+							<i class="fas fa-wifi"></i>
+						</div>
+						<div>
+							<h3>Modern Amenities</h3>
+							<p>
+								High-speed Wi-Fi, conference technology, room service, and 24/7 concierge available.
+							</p>
+						</div>
+					</div>
+
+					<div class="amenity-item">
+						<div class="amenity-icon">
+							<i class="fas fa-car"></i>
+						</div>
+						<div>
+							<h3>Transport & Parking</h3>
+							<p>
+								Complimentary parking and transportation services to key locations in Mitooma District.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div style="text-align: center; margin-top: 50px;">
+					<a href="#booking" class="btn">Book Your Stay Now</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer id="contact">
+			<div class="container">
+				<div class="footer-content">
+					<div class="footer-column">
+						<h3>PEAK HOTEL</h3>
+						<p>
+							<i class="fas fa-map-marker-alt"></i> Mitooma Town, Mitooma District
+						</p>
+						<p>
+							<i class="fas fa-phone"></i> +256 779619025
+						</p>
+						<p>
+							<i class="fas fa-envelope"></i> info@peakhotelmitooma.com
+						</p>
+						<div class="social-icons">
+							<a href="#"><i class="fab fa-facebook-f"></i></a>
+							<a href="#"><i class="fab fa-twitter"></i></a>
+							<a href="#"><i class="fab fa-instagram"></i></a>
+							<a href="#"><i class="fab fa-tripadvisor"></i></a>
+						</div>
+					</div>
+
+					<div class="footer-column">
+						<h3>Quick Links</h3>
+						<a href="index.html">Home</a>
+						<a href="about.html">About & Amenities</a>
+						<a href="#booking">Booking</a>
+						<a href="#contact">Contact Us</a>
+					</div>
+
+					<div class="footer-column">
+						<h3>Our Services</h3>
+						<a href="#">Hotel Accommodation</a>
+						<a href="#">Meeting & Conference</a>
+						<a href="#">Weddings & Parties</a>
+						<a href="#">Dining & Bars</a>
+						<a href="#">Live Football(Premier League)</a>
+					</div>
+
+					<div class="footer-column">
+						<h3>Business Hours</h3>
+						<p>
+							Reception: 24/7
+						</p>
+						<p>
+							Restaurant: 6:00 AM - 11:00 PM
+						</p>
+						<p>
+							Bars: 10:00 AM - 2:00 AM
+						</p>
+						<p>
+							Conference Center: 7:00 AM - 10:00 PM
+						</p>
+					</div>
+				</div>
+
+				<div class="copyright">
+					<p>
+						&copy; 2026 PEAK HOTEL, Mitooma Town. All rights reserved.
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Booking Confirmation Modal -->
+		<div id="confirmationModal" class="modal">
+			<div class="modal-content">
+				<h3>Booking Request Submitted!</h3>
+				<p>
+					Thank you for choosing PEAK HOTEL. We have received your booking request and will contact you within 24 hours to confirm your reservation.
+				</p>
+				<p>
+					For immediate assistance, please call us at +256 779619025
+				</p>
+				<button class="btn close-modal">Close</button>
+			</div>
+		</div>
+
+		<script>
+			// Mobile menu toggle
+			const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+			const mainNav = document.getElementById('mainNav');
+
+			mobileMenuBtn.addEventListener('click', () => {
+				mainNav.classList.toggle('active');
+				mobileMenuBtn.innerHTML = mainNav.classList.contains('active')
+				? '<i class="fas fa-times"></i>': '<i class="fas fa-bars"></i>';
+			});
+
+			// Page navigation simulation
+			const navLinks = document.querySelectorAll('nav a');
+			const homePage = document.getElementById('homePage');
+			const aboutPage = document.getElementById('aboutPage');
+
+			// Check if we're on the about page (simulated via URL parameter)
+			const urlParams = new URLSearchParams(window.location.search);
+			const page = urlParams.get('page');
+
+			if (page === 'about') {
+				showAboutPage();
+			}
+
+			// Add click handlers to navigation links
+			navLinks.forEach(link => {
+				link.addEventListener('click', function(e) {
+					const href = this.getAttribute('href');
+
+					if (href === 'about.html') {
+						e.preventDefault();
+						showAboutPage();
+						// Update URL without reloading
+						history.pushState({
+							page: 'about'
+						}, 'About PEAK HOTEL', '?page=about');
+					} else if (href === 'index.html') {
+						e.preventDefault();
+						showHomePage();
+						// Update URL without reloading
+						history.pushState({
+							page: 'home'
+						}, 'PEAK HOTEL', '/');
+					}
+
+					// Close mobile menu if open
+					if (mainNav.classList.contains('active')) {
+						mainNav.classList.remove('active');
+						mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+					}
+				});
+			});
+
+			// Handle browser back/forward buttons
+			window.addEventListener('popstate', function(event) {
+				if (event.state && event.state.page === 'about') {
+					showAboutPage();
+				} else {
+					showHomePage();
+				}
+			});
+
+			function showAboutPage() {
+				homePage.style.display = 'none';
+				aboutPage.style.display = 'block';
+				document.title = 'About PEAK HOTEL - Luxury in Mitooma Town';
+				// Scroll to top
+				window.scrollTo(0,
+					0);
+			}
+
+			function showHomePage() {
+				aboutPage.style.display = 'none';
+				homePage.style.display = 'block';
+				document.title = 'PEAK HOTEL - Luxury in Mitooma Town';
+				// Scroll to top
+				window.scrollTo(0,
+					0);
+			}
+
+			// Booking form submission
+			const bookingForm = document.getElementById('bookingForm');
+			const confirmationModal = document.getElementById('confirmationModal');
+			const closeModalBtn = document.querySelector('.close-modal');
+
+			bookingForm.addEventListener('submit',
+				function(e) {
+					e.preventDefault();
+
+					// Get form data
+					const formData = {
+						name: document.getElementById('fullName').value,
+						email: document.getElementById('email').value,
+						phone: document.getElementById('phone').value,
+						service: document.getElementById('serviceType').value,
+						date: document.getElementById('date').value,
+						guests: document.getElementById('guests').value,
+						message: document.getElementById('message').value
+					};
+
+					// In a real application, you would send this data to a server
+					console.log('Booking submitted:', formData);
+
+					// Show confirmation modal
+					confirmationModal.style.display = 'flex';
+
+					// Reset form
+					bookingForm.reset();
+
+					// Scroll to top to show the modal
+					window.scrollTo(0, 0);
+				});
+
+			// Close modal when close button is clicked
+			closeModalBtn.addEventListener('click',
+				function() {
+					confirmationModal.style.display = 'none';
+				});
+
+			// Close modal when clicking outside the modal content
+			window.addEventListener('click',
+				function(e) {
+					if (e.target === confirmationModal) {
+						confirmationModal.style.display = 'none';
+					}
+				});
+
+			// Set minimum date for booking to today
+			const today = new Date().toISOString().split('T')[0];
+			document.getElementById('date').setAttribute('min',
+				today);
+
+			// Initialize the page based on URL
+			if (window.location.pathname.includes('about.html') || page === 'about') {
+				showAboutPage();
+			}
+		</script>
+	</body>
+</html>
